@@ -6,6 +6,7 @@ import java.util.LinkedList;
 import graph.Graph;
 
 public abstract class MVC {
+	
 	public abstract LinkedList<Integer> mvc(Graph graph);
 	
 	public void show(LinkedList<Integer> ll){
@@ -20,5 +21,7 @@ public abstract class MVC {
 		System.err.println(sb.toString());
 		System.err.println(String.format("total length: %d",  ll.size()));
 	}
+	
+
 	
 }
