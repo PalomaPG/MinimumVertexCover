@@ -24,7 +24,7 @@ public class Main {
 		if(args.length<1) throw new Exception("Please, enter extern-data and output results paths ");
 		System.err.println(args[0]);
 		testRndGraph( args[1], "rnd_graph");
-		//testExternFiles(args[0], args[1]+"ext_graph.txt");
+		testExternFiles(args[0], args[1]+"ext_graph.txt");
 	}
 	
 	public static void execTests(String pref, PrintWriter pw, TwoApprox ta, Heuristic heur, 
@@ -57,7 +57,7 @@ public class Main {
 		
 		try{
 			
-			for(int i=14; i<=20; i++){
+			for(int i=10; i<=13; i++){
 				StringBuilder sb = new StringBuilder();
 				sb.append(path_output).append(file_pref).append("_").append(i).append(".txt");
 				PrintWriter writer = new PrintWriter(sb.toString());

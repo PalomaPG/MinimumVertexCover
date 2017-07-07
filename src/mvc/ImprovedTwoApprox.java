@@ -20,7 +20,9 @@ public class ImprovedTwoApprox extends MVC{
 			u= aux_graph.maxDegreeNode();
 			vertices.add(u);
 			v=aux_graph.maxNeig(u);
-			if(v>-1) vertices.add(v);
+			if(v>-1 && !vertices.contains(v)) {
+				vertices.add(v);
+			}
 			aux_graph.extractLinks2(u);
 			aux_graph.extractLinks2(v);
 		}
