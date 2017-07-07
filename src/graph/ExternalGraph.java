@@ -8,11 +8,13 @@ import java.util.LinkedList;
 public class ExternalGraph extends Graph{
 
 	private int [] selected_nodes;
+	private String path_to_graph;
+	private int n_edges;
 	
-	public ExternalGraph(int i){
-		n= (int) Math.pow(2, i);
-		selected_nodes = new int[n];
-		graph = new LinkedList[n];
+	public ExternalGraph(String path){
+		path_to_graph = path;
+		setN_edges(0);
+		buildGraph();
 	}
 
 	@Override
@@ -21,36 +23,39 @@ public class ExternalGraph extends Graph{
 		//ReadFile
 		
 		try {
-			System.out.println("Holaa");
-			BufferedReader br = new BufferedReader(new FileReader("/home/paloma/workspace/Tarea3/extern-data/graph.pg"));
-			int n_nodes = Integer.parseInt(br.readLine());
-			br.readLine();
+			
+			BufferedReader br = new BufferedReader(new FileReader(path_to_graph));
 			String line;
-		    while (true) {
+			while((line=br.readLine()).charAt(0)=='c');
+			String [] vals = line.split(" |\t");
+			n=Integer.parseInt(vals[2]);
+			setN_edges(Integer.parseInt(vals[3]));
+			graph = new LinkedList[n];
 
-		        line = br.readLine();
-		        if(line==null) break;
-		        String [] vals = line.split("\t| ");
-		        System.err.println(vals[0]);
-		        
-		        
+			for(int i=0;i<n;i++)
+				graph[i] = new LinkedList<Integer>();
+			
+		    while ((line = br.readLine())!=null) {
+
+		    	if(line.charAt(0)!='e') break;
+		        vals = line.split("\t| ");
+		        graph[Integer.parseInt(vals[1])-1].add(Integer.parseInt(vals[2]));
 		    }
+			br.close();
 		    
 		}catch(IOException e){
 			System.err.println("Error while reading");
 		}
 	}
 	
-	private void selectVertices(int ext_vertices){
-		
-		int k=0;
-		for(int j=0; j<ext_vertices; j++){
-			double p = Math.random();
-			if(p>=0.5) {
-				selected_nodes[k]=j;
-				k++;
-				if(k>=n) break;
-			}
-		}
+
+
+
+	public int getN_edges() {
+		return n_edges;
+	}
+
+	public void setN_edges(int n_edges) {
+		this.n_edges = n_edges;
 	}
 }

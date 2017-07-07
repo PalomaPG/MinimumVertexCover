@@ -7,6 +7,15 @@ import graph.Graph;
 
 public abstract class MVC {
 	
+	protected long runtime;
+	public long getRuntime() {
+		return runtime;
+	}
+
+	public void setRuntime(long runtime) {
+		this.runtime = runtime;
+	}
+
 	public abstract LinkedList<Integer> mvc(Graph graph);
 	
 	public void show(LinkedList<Integer> ll){

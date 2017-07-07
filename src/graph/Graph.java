@@ -59,8 +59,8 @@ public class Graph {
 			Iterator <Integer> it = graph[i].iterator();
 			while(it.hasNext()){
 				int next = it.next();
-				System.err.println(next);
-				System.err.println(i);
+				//System.err.println(next);
+				//System.err.println(i);
 				if(graph[next].contains(i))
 					graph[next].remove((Integer)i);
 			

@@ -16,6 +16,7 @@ public class TwoApprox extends MVC{
 		Graph aux_graph = new Graph();
 		aux_graph.duplicateGraph(graph);
 		int n = graph.getN();
+		this.setRuntime(System.currentTimeMillis());
 		while(true){
 			if(aux_graph.isEmpty()) break;
 			for(int i=0; i<n; i++){
@@ -26,6 +27,7 @@ public class TwoApprox extends MVC{
 				if(j>-1 && !vertices.contains((Integer)j)) vertices.add(j);
 			}
 		}
+		this.setRuntime(System.currentTimeMillis()-this.getRuntime());
 		//aux_graph.show();
 		return vertices;
 	}

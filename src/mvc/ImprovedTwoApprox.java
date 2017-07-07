@@ -14,6 +14,7 @@ public class ImprovedTwoApprox extends MVC{
 		aux_graph.duplicateGraph(graph);
 		int u, v;
 		int n = graph.getN();
+		this.setRuntime(System.currentTimeMillis());
 		while(true){
 			if(aux_graph.isEmpty()) break;
 			u= aux_graph.maxDegreeNode();
@@ -23,6 +24,7 @@ public class ImprovedTwoApprox extends MVC{
 			aux_graph.extractLinks2(u);
 			aux_graph.extractLinks2(v);
 		}
+		this.setRuntime(System.currentTimeMillis()-this.getRuntime());
 		return vertices;
 	}
 

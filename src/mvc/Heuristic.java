@@ -14,12 +14,14 @@ public class Heuristic extends MVC{
 		aux_graph.duplicateGraph(graph);
 		int index;
 		int n = graph.getN();
+		this.setRuntime(System.currentTimeMillis());
 		while(true){
 			if(aux_graph.isEmpty()) break;
 			index= aux_graph.maxDegreeNode();
 			vertices.add(index);
 			aux_graph.extractLinks2(index);
 		}
+		this.setRuntime(System.currentTimeMillis()-this.getRuntime());
 		return vertices;
 	}
 
